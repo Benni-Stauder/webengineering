@@ -112,10 +112,14 @@ body {
     }
 
     .chart.active{
-        width: calc(100vw - 270px);
+        visibility: hidden;
+        transition-delay: 0.3s;
+        width: 0;
     }
 
     .chart{
-        width: 100vw;
+        transition-delay: 0.3s;
+        visibility: visible;
+        width: 100%;
     }
 }

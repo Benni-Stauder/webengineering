@@ -1303,7 +1303,6 @@ const returnedData = {
 
 class Stock extends Component {
     constructor(props) {
-        console.log("Hallo")
         super(props);
         this.state = {
             isLoaded: false,
@@ -1337,7 +1336,6 @@ class Stock extends Component {
             url: API_CALL
         })
             .then(function (response) {
-                console.log(response.data)
                 return response.data;
             })
             .then(function(data) {
