@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import {BrowserRouter, NavLink, Outlet, Route, Routes} from 'react-router-dom'
-import { ReactComponent as Logo } from '../../logos/Logo.svg'
+import { ReactComponent as Logo } from '../../icons/Logo.svg'
 import './NavbarStyles.css'
-import Stock from "../aktienkurse/Stock";
 import RSSFeed from "../rss/RSSFeed"
+import StockApp from "../aktienkurse/StockApp"
+import WetterApp from "../wetter/WetterApp";
 
 function Homepage() {
     return (
@@ -65,9 +66,10 @@ const Navbar = () => {
             <Route path={"/"} element={<Homepage/>}/>
             <Route path={"/aktien"} element={
                 <div className={`chart ${showNavbar && 'active'}`}>
-                    <Stock/>
+                    <StockApp/>
                 </div>}/>
             <Route path={"/rss"} element={<RSSFeed/>}/>
+            <Route path={"/wetter"} element={<WetterApp/>}/>
         </Routes>
         </BrowserRouter>
         </>
