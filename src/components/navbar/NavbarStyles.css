@@ -68,14 +68,6 @@ body {
     background-color: #574c4c;
 }
 
-.chart{
-    width: 100vw;
-}
-
-.chart.active{
-    width: 100vw;
-}
-
 @media (max-width: 768px) {
     .nav-elements ul li:not(:last-child) {
         margin-right: 30px;
@@ -113,15 +105,4 @@ body {
         margin-top: 22px;
     }
 
-    .chart.active{
-        visibility: hidden;
-        transition-delay: 0.3s;
-        width: 0;
-    }
-
-    .chart{
-        transition-delay: 0.3s;
-        visibility: visible;
-        width: 100%;
-    }
 }

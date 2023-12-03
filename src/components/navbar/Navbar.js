@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react'
-import {BrowserRouter, NavLink, Outlet, Route, Routes} from 'react-router-dom'
-import { ReactComponent as Logo } from '../../icons/Logo.svg'
+import {BrowserRouter, NavLink, Route, Routes} from 'react-router-dom'
+import {ReactComponent as Logo} from '../../icons/Logo.svg'
 import './NavbarStyles.css'
 import RSSFeed from "../rss/RSSFeed"
 import StockApp from "../aktienkurse/StockApp"

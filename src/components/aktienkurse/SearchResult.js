@@ -1,4 +1,6 @@
-import { useEffect, useState, useRef } from 'react';
+// noinspection JSUnresolvedReference
+
+import {useEffect, useRef, useState} from 'react';
 
 const SearchResult = ({suggestionList, seeStockDetail, typedStock, selectStock}) => {
     const [list, setList] = useState(suggestionList);

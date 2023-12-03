@@ -1,4 +1,6 @@
-import { useState, useEffect } from 'react';
+// noinspection JSUnresolvedReference
+
+import {useEffect, useState} from 'react';
 import axios from 'axios';
 import SearchIcon from '@mui/icons-material/Search';
 import SearchResultList from './SearchResult';
@@ -45,6 +47,7 @@ const SearchBar = ({selectedStock, seeStockDetail}) => {
         setResultList(null);
     }
 
+    // noinspection JSValidateTypes
     return (
         <form className='search-box-form-container' onSubmit={(e) => handleSearchSubmission(e)}>
             <div className='search-box-container'>
