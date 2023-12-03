@@ -32,7 +32,8 @@ const WeatherIcons = {
     "11d": sturm,
     "11n": sturm,
     "13n" : schnee,
-    "Sonnen Auf-/Untergang": tagNacht,
+    "Sonnenaufgang": tagNacht,
+    "Sonnenuntergang": tagNacht,
     "Luftfeuchtigkeit": luftFeuchtigkeit,
     "Luftdruck": luftDruck,
     "Windgeschwindigkeit": wind,
@@ -124,7 +125,7 @@ const Wetter = (props) => {
             <Ort>{`${wetter?.name}, ${wetter?.sys?.country}`}</Ort>
 
             <WetterInfoContainer>
-                <WetterInfoComponent name={"Sonnen Auf-/Untergang"}
+                <WetterInfoComponent name={isDay ? "Sonnenuntergang" : "Sonnenaufgang"}
                                       value={`${getTime(wetter?.sys[isDay ? "sunset" : "sunrise"])} Uhr`}/>
                 <WetterInfoComponent name={"Luftfeuchtigkeit"} value={`${wetter?.main?.humidity} %`}/>
                 <WetterInfoComponent name={"Windgeschwindigkeit"} value={`${wetter?.wind?.speed} kmh`}/>

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import {useEffect, useState} from 'react'
 import {BrowserRouter, NavLink, Outlet, Route, Routes} from 'react-router-dom'
 import { ReactComponent as Logo } from '../../icons/Logo.svg'
 import './NavbarStyles.css'
@@ -9,10 +9,8 @@ import WetterApp from "../wetter/WetterApp";
 function Homepage() {
     return (
         <>
-            <h1>Hallo</h1>
-            <p>awiaufg wufigawfiug awgfiuawgf aifawfgt awfgawifg afgawfgtawifgawfizugawfagwf awf afga wfgafugawf awof awfuawfg awfg af afa fuag fawufg</p>
-            <p>wiohfz owf ufguiwfgw eifwgef wefgw efgweuifgw eufgw efgweugfw efgwef wegfwefgwefzugwefweg fwe fwefgwef wef wefwef wefwef we</p>
-            <Outlet/>
+            <h1>Webengineering Projekt 2023</h1>
+            <p>9765514</p>
         </>
     )
 }
@@ -24,8 +22,22 @@ const Navbar = () => {
         setShowNavbar(!showNavbar)
     }
 
+    useEffect(() => {
+        function handleResize() {
+            // Update the state or perform any other actions when the
+            // browser is resized
+        }
+
+        // Attach the event listener to the window object
+        window.addEventListener('resize', handleResize);
+
+        // Remove the event listener when the component unmounts
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     return (
-        <>
         <BrowserRouter>
         <nav className="navbar">
             <div className="container">
@@ -47,13 +59,7 @@ const Navbar = () => {
                             <NavLink to="/wetter">Wetter</NavLink>
                         </li>
                         <li>
-                            <NavLink to={"/rss"}>RSS</NavLink>
-                        </li>
-                        <li>
                             <NavLink to="/news">News</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to="/ueber_mich">Über mich</NavLink>
                         </li>
                         <li>
                             <NavLink to="/kontakt">Kontakt</NavLink>
@@ -64,15 +70,11 @@ const Navbar = () => {
         </nav>
         <Routes>
             <Route path={"/"} element={<Homepage/>}/>
-            <Route path={"/aktien"} element={
-                <div className={`chart ${showNavbar && 'active'}`}>
-                    <StockApp/>
-                </div>}/>
-            <Route path={"/rss"} element={<RSSFeed/>}/>
+            <Route path={"/aktien"} element={<StockApp/>}/>
+            <Route path={"/news"} element={<RSSFeed/>}/>
             <Route path={"/wetter"} element={<WetterApp/>}/>
         </Routes>
         </BrowserRouter>
-        </>
     )
 }
 

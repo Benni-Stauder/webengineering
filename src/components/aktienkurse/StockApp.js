@@ -14,6 +14,21 @@ const StockApp = () => {
         setStock(symbol);
     }
 
+    useEffect(() => {
+        function handleResize() {
+            // Update the state or perform any other actions when the
+            // browser is resized
+        }
+
+        // Attach the event listener to the window object
+        window.addEventListener('resize', handleResize);
+
+        // Remove the event listener when the component unmounts
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     return (
         <div className="App">
             <SearchBar seeStockDetail={seeStockDetail} selectedStock={stock} />

@@ -1,5 +1,5 @@
 import {useState} from "react";
-import axios, {Axios} from "axios";
+import axios from "axios";
 import styled from "styled-components";
 import Wetter from "./Wetter";
 import OrtComponent from "./Ort";

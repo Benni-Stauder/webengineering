@@ -34,7 +34,7 @@
 .App .search-box-form-container .search-box-container .search-input-container .search-glass {
     position: absolute;
     right: 5px;
-    top: 0px;
+    top: 0;
     color: #4fa4f4;
 }
 .App .search-box-form-container .search-box-container .search-input-container .search-glass:hover {
