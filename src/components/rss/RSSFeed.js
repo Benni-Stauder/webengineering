@@ -49,6 +49,7 @@ const RSSFeed = () => {
     const imageStyle = {textAlign: "center", width: "80vw", maxHeight: "80vh", objectFit: "cover"}
     const linkStyle = {color: "black"}
 
+
     const fetchTagesschauRSS = () => {
         const rssUrl = 'https://www.tagesschau.de/infoservices/alle-meldungen-100~rss2.xml';
         fetch(rssUrl)
