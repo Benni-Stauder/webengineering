@@ -13,6 +13,14 @@ const getSrc = (content) => {
     }
 }
 
+const getSrcNY = (content) => {
+    try {
+        return content.querySelector("content").attributes["url"]["value"]
+    } catch (error) {
+        return ""
+    }
+}
+
 const RSSFeed = () => {
 
     const [tagesschauHtml, setTagesschauHtml] = useState([])
@@ -143,7 +151,7 @@ const RSSFeed = () => {
                            target={"_blank"}
                            rel={"noreferrer"}
                            style={linkStyle}>
-                        <img src={el.querySelector("content").attributes["url"]["value"]}
+                            <img src={getSrcNY(el)}
                              alt={el.querySelector("title").innerHTML}
                              style={imageStyle}/>
                         </a>
