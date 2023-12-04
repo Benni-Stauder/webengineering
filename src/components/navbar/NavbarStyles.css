@@ -20,12 +20,9 @@ body {
 
 .navbar {
     height: 60px;
-    background-color: rgba(225, 110, 110, 1);
+    background-color: lavender;
     position: relative;
     z-index: 999;
-}
-
-.logo {
 }
 
 .menu-icon {
@@ -74,7 +71,7 @@ body {
     }
 }
 
-@media (max-width: 610px) {
+@media (max-width: 890px) {
     .menu-icon {
         display: block;
         cursor: pointer;
@@ -84,7 +81,7 @@ body {
         position: absolute;
         right: 0;
         top: 60px;
-        background-color: rgba(225, 110, 110, 1);
+        background-color: lavender;
         width: 0;
         height: calc(100vh - 60px);
         transition: all 0.3s ease-in;

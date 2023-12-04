@@ -34,6 +34,7 @@ const WeatherIcons = {
     "11d": sturm,
     "11n": sturm,
     "13n" : schnee,
+    "13d": schnee,
     "Sonnenaufgang": tagNacht,
     "Sonnenuntergang": tagNacht,
     "Luftfeuchtigkeit": luftFeuchtigkeit,

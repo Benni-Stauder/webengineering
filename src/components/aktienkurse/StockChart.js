@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import CanvasJSReact from '@canvasjs/react-stockcharts';
 import axios from "axios";
 import {IBMCache} from "./cache/IBM";
+import {MFSTCache} from "./cache/MFST";
 
 let API_KEY = "31607V511WRQOET8"
 let CanvasJSStockChart = CanvasJSReact.CanvasJSStockChart;
@@ -89,25 +90,28 @@ const StockChart = (props) => {
         margin: "auto"
     };
     const ParseData = (data) => {
-        console.log(data)
-        for (let key in data['Time Series (Daily)']) {
-            chartData.push({
-                x: new Date(key),
-                y: [
-                    data['Time Series (Daily)'][key]['1. open'],
-                    data['Time Series (Daily)'][key]['2. high'],
-                    data['Time Series (Daily)'][key]['3. low'],
-                    data['Time Series (Daily)'][key]['4. close']
-                ]
-            })
-            chartVolume.push({
-                x: new Date(key),
-                y: data['Time Series (Daily)'][key]['5. volume']
-            })
-            chartClose.push({
-                x: new Date(key),
-                y: data['Time Series (Daily)'][key]['4. close']
-            })
+        if (!isLoaded) {
+            for (let key in data['Time Series (Daily)']) {
+                chartData.push({
+                    x: new Date(key),
+                    y: [
+                        parseFloat(data['Time Series (Daily)'][key]['1. open']),
+                        parseFloat(data['Time Series (Daily)'][key]['2. high']),
+                        parseFloat(data['Time Series (Daily)'][key]['3. low']),
+                        parseFloat(data['Time Series (Daily)'][key]['4. close'])
+                    ]
+                })
+                chartVolume.push({
+                    x: new Date(key),
+                    y: parseFloat(data['Time Series (Daily)'][key]['5. volume'])
+                })
+                chartClose.push({
+                    x: new Date(key),
+                    y: parseFloat(data['Time Series (Daily)'][key]['4. close'])
+                })
+            }
+
+            isLoaded = true
         }
     }
     const fetchAPIResponse = () => {
@@ -117,19 +121,18 @@ const StockChart = (props) => {
         method: 'GET',
         url: API_CALL
     })
-        .then(function (response) {
+        .then((response) => {
+            if (!response.ok) return new Error("Fehler beim Laden der Aktiendaten")
             return response.data;
         })
-        .then(ParseData);
+        .then(data => ParseData(data));
     }
 
     if (stockSymbol === 'IBM') {
         ParseData(IBMCache)
-    }
-    if (stockSymbol === 'TSLA') {
-        ParseData(IBMCache)
-    }
-    if (stockSymbol === 'BOM') {
+    } else if (stockSymbol === 'MFST') {
+        ParseData(MFSTCache)
+    } else if (stockSymbol === '23') {
         ParseData(IBMCache)
     }
     else fetchAPIResponse()

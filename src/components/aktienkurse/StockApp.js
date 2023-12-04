@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import './StockApp.css';
 import SearchBar from './SearchBar';
 import StockChart from './StockChart'
@@ -19,11 +19,7 @@ const StockApp = () => {
             // Update the state or perform any other actions when the
             // browser is resized
         }
-
-        // Attach the event listener to the window object
         window.addEventListener('resize', handleResize);
-
-        // Remove the event listener when the component unmounts
         return () => {
             window.removeEventListener('resize', handleResize);
         };
@@ -33,7 +29,7 @@ const StockApp = () => {
         <div className="App">
             <SearchBar seeStockDetail={seeStockDetail} selectedStock={stock} />
             {
-                stock !== '' &&
+                stock.length >= 2 &&
                 <StockChart stockSymbol={stock} />
             }
         </div>
