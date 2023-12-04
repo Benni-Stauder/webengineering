@@ -123,6 +123,14 @@ const StockChart = (props) => {
     })
         .then((response) => {
             if (!response.ok) return new Error("Fehler beim Laden der Aktiendaten")
+            console.log(response.data)
+            try {
+                if (response.data['Information'] === "Thank you for using Alpha Vantage! Our standard API rate limit is 25 requests per day. Please subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to instantly remove all daily rate limits.") {
+                    throw new Error()
+                }
+            } catch (e) {
+                throw new Error("API Error")
+            }
             return response.data;
         })
         .then(data => ParseData(data));
@@ -132,7 +140,7 @@ const StockChart = (props) => {
         ParseData(IBMCache)
     } else if (stockSymbol === 'MFST') {
         ParseData(MFSTCache)
-    } else if (stockSymbol === '23') {
+    } else if (stockSymbol === 'T34') {
         ParseData(IBMCache)
     }
     else fetchAPIResponse()
