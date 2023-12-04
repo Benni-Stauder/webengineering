@@ -37,12 +37,13 @@ const WetterLogo = styled.img`
   margin: 40px auto;
 `;
 const Ort = (props) => {
-    const { updateOrt, fetchWetter } = props;
+    const {ort, updateOrt, fetchWetter} = props;
     return (
         <>
             <WetterLogo src={perfekterTag} />
             <SearchBox onSubmit={fetchWetter}>
                 <input
+                    value={ort}
                     onChange={(e) => updateOrt(e.target.value)}
                     placeholder="Ort"
                 />

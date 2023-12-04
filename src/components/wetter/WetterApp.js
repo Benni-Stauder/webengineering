@@ -21,22 +21,26 @@ const Container = styled.div`
 `;
 
 const WetterApp = () => {
-    const [ort, updateOrt] = useState();
+    const [ort, updateOrt] = useState('');
     const [wetter, updateWetter] = useState();
     const fetchWetter = async (e) => {
         e.preventDefault();
-        const response = ((await axios.get(
-            `https://api.openweathermap.org/data/2.5/weather?q=${ort}&appid=${API_KEY}`,
-        ))).data;
-        console.log(response)
-        updateWetter(response);
+        try {
+            const response = ((await axios.get(
+                `https://api.openweathermap.org/data/2.5/weather?q=${ort}&appid=${API_KEY}`,
+            ))).data;
+            console.log(response)
+            updateWetter(response);
+        } catch (error) {
+            updateOrt("Ort wurde nicht gefunden")
+        }
     };
     return (
         <Container>
             {ort && wetter ? (
                 <Wetter wetter={wetter} city={ort} />
             ) : (
-                <OrtComponent updateOrt={updateOrt} fetchWetter={fetchWetter} />
+                <OrtComponent ort={ort} updateOrt={updateOrt} fetchWetter={fetchWetter}/>
             )}
         </Container>
     );

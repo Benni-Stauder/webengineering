@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# DHBW Stuttgart Webengineering Projekt von: 9765514
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Ausführung:
 
-## Available Scripts
+Im Hauptverzeichnis des Projekt kann mit
 
-In the project directory, you can run:
+### `npm install`
 
+und danach
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Der Webserver gestartet werden.\
+Unter [http://localhost:3000](http://localhost:3000) kann die Webseite erreicht weden.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Baut das Projekt im build Ordner, so dass man es auf seinem eigenen Webserver deployen kann.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Projekt:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Es wurden folgende Aufgaben erledigt:
 
-### `npm run eject`
+* Anzeigen des Aktienverlaufs + umfangreichere Darstellung (1)
+* Anzeige von Wetterdaten (Nur aktueller Tag, da gratis API keine Vorhersage unterstützt), dafür jedoch grafische
+  Aufhübschung (1)
+* Anzeige mehrerer Nachrichten aus einem RSS-Feed (1)
+* Anzeige der Züge eines Bahngleises inklusive search (siehe Züge) (2)
+* Alles wurde in React geschrieben (3)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+= (8 Punkte)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Insgesamt werden alle API-Calls Client-Seitig ausgeführt, da es mir Zeitlich nicht gereicht hat,
+es ordentlich zu machen (Sry für die verspätete Abgabe). Alle API-Keys sind zudem Hardcoded, man könnte diese
+jedoch in eine ENV Datei auslagern.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Züge:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Bei der Zug-APP wurde die aktuellste CSV Datei der Bahn verwendet, diese lässt sich
+dank Cors jedoch nicht aus dem Web holen und wurde lokal gecached. Da die Bahn jedoch
+sehr selten eine neue Datei veröffentlicht, stellt dies in der Praxis eine valide Methode dar.
 
-## Learn More
+Die gratis Version der Bahn API kann nur abfahrten am selben Tag anfragen.
+Bei Anfragen für andere Tage kommt es zum Fehler.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Aktien:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Alle Aktien werden per API-Call geholt. Da das Limit bei 25 Anfragen pro Stunde
+viel zu gering ist, wurden folgende Unternehmen mit dummy Daten versorgt:
 
-### Code Splitting
+* IBM
+* MFST (Microsoft)
+* TSLA (Tesla)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Hierfür bitte einfach das Symbol (z.B. TSLA für Tesla)
+in das Suchfeld eingeben. Sollte das API-Limit noch nicht
+überschritten sein, so funktioniert auch die Suchfunktion.
 
-### Analyzing the Bundle Size
+# Entfernen des Systems
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Einfach den Ordner löschen. ;)
+Alle dependencies liegen im Ordner node_modules,
+dieser wird beim Start automatisch erzeugt.
