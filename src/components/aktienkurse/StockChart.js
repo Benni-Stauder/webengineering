@@ -4,7 +4,9 @@ import axios from "axios";
 import {IBMCache} from "./cache/IBM";
 import {MFSTCache} from "./cache/MFST";
 
-let API_KEY = "31607V511WRQOET8"
+//let API_KEY = "31607V511WRQOET8"
+let API_KEY = "VT4E24LXHOD47XNE"
+
 let CanvasJSStockChart = CanvasJSReact.CanvasJSStockChart;
 
 const StockChart = (props) => {
@@ -126,7 +128,8 @@ const StockChart = (props) => {
             console.log(response.data)
             try {
                 if (response.data['Information'] === "Thank you for using Alpha Vantage! Our standard API rate limit is 25 requests per day. Please subscribe to any of the premium plans at https://www.alphavantage.co/premium/ to instantly remove all daily rate limits.") {
-                    throw new Error()
+                    console.log("API Rate Limit")
+                    throw new Error("API Error")
                 }
             } catch (e) {
                 throw new Error("API Error")
